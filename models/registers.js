@@ -5,7 +5,7 @@ class Register {
 
   async insert(registerData) {
     try {
-      await pool.query('INSERT INTO registro(task) VALUES (?)', [registerData.task]);
+      await pool.query('INSERT INTO registers(task) VALUES (?)', [registerData.task]);
       return true;
     } catch (err) {
       return false;
@@ -14,7 +14,7 @@ class Register {
 
   async update(id, registerData) {
     try {
-      await pool.query('UPDATE registro SET task = ? WHERE id = ?', [registerData.task, id]);
+      await pool.query('UPDATE registers SET task = ? WHERE id = ?', [registerData.task, id]);
       return true;
     } catch (err) {
       return false;
@@ -23,7 +23,7 @@ class Register {
 
   async delete(id) {
     try {
-      await pool.query('DELETE FROM registro WHERE id = ?', [id]);
+      await pool.query('DELETE FROM registers WHERE id = ?', [id]);
       return true;
     } catch (err) {
       return false;

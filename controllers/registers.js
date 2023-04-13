@@ -2,14 +2,14 @@ const registerModel = require("../models/registers")
 const { pool } = require("../database/db")
 
 const allRegisters = async (req, res) => {
-    const [response] = await pool.query('SELECT * FROM registro');
+    const [response] = await pool.query('SELECT * FROM registers');
     if (!response) return res.status(400).send("Invalid request");
     res.status(200).json(response);
 }
 
 const register = async (req, res) => {
     let id = req.params["id"];
-    const [response] = await pool.query('SELECT * FROM registro WHERE id = ?', [id]);
+    const [response] = await pool.query('SELECT * FROM registers WHERE id = ?', [id]);
     if (!response || response.length <= 0) return res.status(400).send("Invalid request");
     res.status(200).json(response);
 }
